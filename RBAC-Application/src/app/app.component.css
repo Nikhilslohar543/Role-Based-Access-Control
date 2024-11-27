@@ -1,0 +1,15 @@
+.nav-link {
+    background-color: #f8f9fa; /* Default background */
+    color: #343a40; /* Default text color */
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link.active-tab {
+    background-color: #343a40; /* Darker background for active tab */
+    color: #ffffff; /* White text for active tab */
+    font-weight: bold;
+  }
+  
+  .main{
+    margin-top: 10px;
+  }

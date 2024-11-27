@@ -1,0 +1,32 @@
+<div>
+    <div class="container">
+        <button class="btn btn-outline-primary" (click)="goto()"
+            style="margin-top: 20px; margin-bottom: 15px;">Back</button>
+        <div class="header">
+            <h3>Users List</h3>
+        </div>
+        <div *ngIf="!tempdata || tempdata.length === 0" class="alert alert-info">
+            No users found. Add some users to see them here.
+        </div>
+        <div *ngIf="tempdata.length > 0">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Sr.no</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="row" *ngFor="let i of tempdata" (click)="onClick(i.id)">
+                        <td> {{ i.id }} </td>
+                        <td> {{ i.firstname }} {{ i.lastname }} </td>
+                        <td [ngClass]="{ 'text-success': i.status === 'active', 'text-danger': i.status === 'inactive' }">{{i.status}}</td>
+                        <td><a (click)="onClick(i.id)">view</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="container">
+    <button style="margin-top: 20px;" class="btn btn-outline-primary" (click)="goto()">Back</button>
+
+    <form (ngSubmit)="onSubmit()" #UserForm="ngForm" novalidate
+        style="width: 50%; margin: auto; margin-top: 20px; margin-bottom: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+        <h3 style="text-align: center; margin-bottom: 20px;">Update User</h3>
+
+        <div class="form-group mb-4">
+            <label for="firstname">First Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="firstname" [(ngModel)]="user.firstname" name="firstname"
+                required #firstname="ngModel">
+            <div *ngIf="firstname.invalid && firstname.touched" class="text-danger">First name is required.</div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="lastname">Last Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="lastname" [(ngModel)]="user.lastname" name="lastname" required
+                #lastname="ngModel">
+            <div *ngIf="lastname.invalid && lastname.touched" class="text-danger">Last name is required.</div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="emailid">Email ID <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="emailid" [(ngModel)]="user.emailid" name="emailid" required
+                #emailid="ngModel">
+            <div *ngIf="emailid.invalid && emailid.touched" class="text-danger">A valid email ID is required.</div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="username">Username <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username" required
+                #username="ngModel">
+            <div *ngIf="username.invalid && username.touched" class="text-danger">Username is required.</div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="role">Role <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="role" [(ngModel)]="user.role" name="role" required
+                #role="ngModel">
+            <div *ngIf="role.invalid && role.touched" class="text-danger">Role is required.</div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label>Permission <span class="text-danger">*</span></label>
+            <div>
+                <label>
+                    <input type="checkbox" name="read" [checked]="user.permission.includes('read')" 
+                           (change)="togglePermission('read')"> Read
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" name="write" [checked]="user.permission.includes('write')" 
+                           (change)="togglePermission('write')"> Write
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" name="delete" [checked]="user.permission.includes('delete')" 
+                           (change)="togglePermission('delete')"> Delete
+                </label>
+            </div>
+            <div *ngIf="user.permission.length === 0 && UserForm.submitted" class="text-danger">
+                At least one permission is required.
+            </div>
+        </div>
+        
+        <div class="form-group mb-4">
+            <label for="status">Status <span class="text-danger">*</span></label>
+            <select class="form-control" id="status" name="status" [(ngModel)]="user.status" required #status="ngModel">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+            <div *ngIf="status.invalid && status.touched" class="text-danger">Status is required.</div>
+        </div>
+        
+        <button class="btn btn-outline-primary" type="submit" [disabled]="UserForm.invalid"
+            style="display: block; margin: auto;">Update User</button>
+    </form>
+</div>

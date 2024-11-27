@@ -1,0 +1,57 @@
+<div class="card-body container">
+    <button class="btn btn-outline-primary" (click)="goto()"
+            style="margin-top: 20px; margin-bottom: 15px;">Back</button>
+    <form #expForm="ngForm" style="width: 90%; margin-left: 20%;">
+
+        <div *ngIf="tempdata.length > 0"
+            style="border: 2px solid #ccc; padding: 20px; border-radius: 8px; width: 60%; align-self: center;">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label><strong>User ID:</strong></label>
+                    <p>{{ tempdata[0].id }}</p>
+                </div>
+                <div class="col-md-6">
+                    <label><strong>Name:</strong></label>
+                    <p>{{ tempdata[0].firstname }} {{ tempdata[0].lastname }}</p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label><strong>Email ID:</strong></label>
+                    <p>{{ tempdata[0].emailid }}</p>
+                </div>
+                <div class="col-md-6">
+                    <label><strong>Username:</strong></label>
+                    <p>{{ tempdata[0].username }}</p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label><strong>Role:</strong></label>
+                    <p>{{ tempdata[0].role }}</p>
+                </div>
+                <div class="col-md-6">
+                    <label><strong>Status:</strong></label>
+                    <p
+                        [ngClass]="{ 'text-success': tempdata[0].status === 'active', 'text-danger': tempdata[0].status === 'inactive' }">
+                        {{ tempdata[0].status }}</p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label><strong>Permission:</strong></label>
+                    <p>{{ tempdata[0].permission }}</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div style="margin-left: 18%;">
+            <button class="btn btn-outline-primary login_btn" (click)="update(tempdata[0].id)">Update
+                User</button>&nbsp;&nbsp;
+            <button class="btn btn-outline-danger login_btn" (click)="delete(tempdata[0].id)">Delete User</button>
+        </div>
+    </form>
+</div>
