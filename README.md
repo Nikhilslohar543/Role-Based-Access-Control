@@ -58,7 +58,7 @@ Clear and interactive permission display.
 
 **1. Navigate to the backend directory:**
 
-- cd BackEnd
+- cd RBAC-Application(Backend)
   
 **2. Update the application.properties file with your MySQL database credentials:**
 
@@ -75,7 +75,7 @@ Clear and interactive permission display.
 
 **1. Navigate to the frontend directory:**
 
-- cd FrontEnd
+- cd RBAC-Application
 
 **2. Install the required dependencies:**
 
